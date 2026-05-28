@@ -4,15 +4,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-
-            agent any
-
-            steps {
-                git 'https://github.com/shivamtomar2/cd-demo.git'
-            }
-        }
-
         stage('Build & Deploy to Staging') {
 
             agent {
