@@ -15,7 +15,7 @@ pipeline {
                 sh 'mvn clean package'
 
                 sh '''
-                ansible-playbook \
+                ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook \
                 -i inventory/staging \
                 deploy.yml \
                 --private-key ~/.ssh/Jenk.pem
@@ -41,7 +41,7 @@ pipeline {
             steps {
 
                 sh '''
-                ansible-playbook \
+                ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook \
                 -i inventory/production \
                 deploy.yml \
                 --private-key ~/.ssh/Jenk.pem
