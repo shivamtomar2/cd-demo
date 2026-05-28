@@ -1,0 +1,18 @@
+- hosts: all
+
+  tasks:
+
+    - name: Create app folder
+      file:
+        path: /home/ubuntu/app
+        state: directory
+
+    - name: Copy jar
+      copy:
+        src: target/cd-demo-1.0.jar
+        dest: /home/ubuntu/app/
+
+    - name: Restart App
+      shell: |
+        pkill java || true
+        nohup java -jar /home/ubuntu/app/cd-demo-1.0.jar > app.log 2>&1 &
