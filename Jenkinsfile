@@ -36,10 +36,10 @@ pipeline {
                 echo 'Ansible → Deploying to AWS Ubuntu Staging Server'
 
                 sh '''
-                ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook \
+                ANSIBLE_HOST_KEY_CHECKING=False /opt/homebrew/bin/ansible-playbook \
                 -i inventory/staging \
                 deploy.yml \
-                --private-key ~/.ssh/Jenk.pem
+                --private-key /Users/ajeettomar/.ssh/Jenk.pem
                 '''
             }
         }
@@ -59,10 +59,10 @@ pipeline {
                 echo 'Ansible → Deploying to AWS Ubuntu Production Server'
 
                 sh '''
-                ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook \
+                ANSIBLE_HOST_KEY_CHECKING=False /opt/homebrew/bin/ansible-playbook \
                 -i inventory/production \
                 deploy.yml \
-                --private-key ~/.ssh/Jenk.pem
+                --private-key /Users/ajeettomar/.ssh/Jenk.pem
                 '''
             }
         }
